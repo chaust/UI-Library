@@ -102,9 +102,10 @@ function finity:generateName()
 	local valid = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
 	local name = ""
 	local length = math.random(14, 24)
-	
+
 	for i = 1, length do
-		name = name .. valid[math.random(1, #valid)]
+		local p = math.random(1, #valid)
+		name = name .. string.sub(valid, p, p)
 	end
 	return name
 end
@@ -1392,7 +1393,7 @@ function finity.new(isdark, gprojectName, thinProject)
 	self:addShadow(self2.container, 0)
 
 	self2.categories.ClipsDescendants = true
-	
+
 	if syn and syn.protect_gui then
 		syn.protect_gui(self2.userinterface)
 		self2.userinterface.Parent = self.gs["CoreGui"]

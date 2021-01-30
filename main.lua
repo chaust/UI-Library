@@ -99,14 +99,15 @@ function finity:Create(class, properties)
 end
 
 function finity:generateName()
-	local valid = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+	local characters = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 	local name = ""
 	local length = math.random(14, 24)
-
+	
 	for i = 1, length do
-		local p = math.random(1, #valid)
-		name = name .. string.sub(valid, p, p)
+		local charPos = math.random(#characters)
+		name = name .. string.sub(characters, charPos, charPos)
 	end
+	
 	return name
 end
 

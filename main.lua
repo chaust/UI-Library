@@ -726,8 +726,13 @@ function Material.Load(Config)
 	end
 
 	local NewInstance = Objects.new("ScreenGui")
-	NewInstance.Name = Title
-	NewInstance.Parent = TargetParent
+    NewInstance.Name = Title
+
+    if syn and syn.protect_gui then
+        syn.protect_gui(NewInstance)
+    end
+
+    NewInstance.Parent = TargetParent
 
 	MainGUI = NewInstance
 
